@@ -1,0 +1,20 @@
+{
+  "s3": {
+    "stage": {
+      "bucket": "projects-staging.seattletimes.com",
+      "path": "unreal-squid"
+    },
+    "live": {
+      "bucket": "projects.seattletimes.com",
+      "path": "2017/sports/legion-of-boom"
+    }
+  },
+  "title": "",
+  "description": "",
+  "url": "",
+  "image": "assets/social.jpg",
+  "sheets": ["13fcOBfdNmOZoyuGOEsyq0mYiWj4TWD1hzHhhLD0uYSg"],
+  "standout": false,
+  "embedded": true,
+  "production": true
+}

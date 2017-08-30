@@ -1,0 +1,372 @@
+@import "seattletimes";
+
+@dark-red: #ea5a47;
+
+@light-red: #f29e8b;
+
+@blue: #0C5581;
+
+// @light-red: #245998;
+// @passingYards: #4DFF00;
+
+main.interactive {
+  max-width: 960px;
+}
+
+h1 {
+  @media @tablet {
+    font-size: 36px;
+  }
+
+  @media @mobile {
+    font-size: 30px;
+  }
+}
+
+.chatter {
+  padding-bottom: 20px;
+  font-size: 17px;
+}
+
+.buttons {
+  .display-flex();
+  .justify-content(center);
+
+  padding-bottom: 30px;
+
+
+  input {
+    display: none;
+  }
+
+  label {
+    background-color: @df-light-gray;
+    padding: 10px;
+    font-size: 17px;
+    margin-right: 7px;
+    border-radius: 4px;
+    text-align: center;
+
+
+    @media @mobile {
+      font-size: 16px;
+      .flex(0 0 45%);
+      margin: 4px;
+      text-align: center;
+    }
+  
+    &:hover, &:focus {
+      background-color: @df-middle-gray;
+      color: white;
+      cursor: pointer;
+      transition: 0.2s linear;
+    }
+  }
+
+  input[type="radio"]:checked + label {
+    background-color: @df-middle-gray;
+    color: white;
+  }
+
+  @media @mobile {
+    .flex-wrap(wrap);
+  }
+
+}
+
+.note {
+  padding-bottom: 10px;
+  font-size: 17px;
+  // text-align: center;
+
+  @media @mobile {
+    padding-bottom: 15px;
+    padding-top: 15px;
+  }
+
+  ul {
+    margin-top: 0px;
+  }
+}
+
+.graphicContainer {
+  position: relative;
+  margin: 10px;
+  padding-bottom: 40px;
+
+  .notesContainer {
+    text-align: center;
+
+   .note {
+    font-size: 16px;
+   }
+  }
+
+
+  .combo {
+    position: relative;
+    .display-flex();
+    .align-items(center);
+    // padding-bottom: 10px;
+    // .justify-content(center);
+
+    @media @tablet {
+      .flex-wrap(wrap);
+      padding-bottom: 30px;
+    }
+
+    @media @mobile {
+      .flex-wrap(wrap);
+      padding-bottom: 15px;
+      .justify-content(flex-start);
+    }
+
+    .players {
+      .display-flex();
+      .flex(0 0 35%);
+      .justify-content(flex-end);
+
+      @media @tablet {
+        .flex(0 0 52%);
+      }
+
+      @media @mobile {
+        .flex(0 0 100%);
+       .justify-content(flex-start);
+       // padding: 0 0 10px 0;
+      }
+
+      .playerContainer {
+        .flex(0 0 30%);
+        padding-right: 8px;
+
+        @media @mobile {
+          padding-right: 0;
+        }
+
+        .playerImage {
+          text-align: center;
+          img {
+            width: 60px;
+
+            @media @mobile {
+              width: 50%;
+            }
+          }
+        };
+
+        .playerName {
+          display: none;
+          font-size: 16px;
+          line-height: 18px;
+          text-align: center;
+        }
+      }
+    }
+
+    &:first-child {
+      padding-top: 0px;
+      padding-bottom: 30px;
+
+      .playerContainer .playerName {
+        // padding-bottom: 10px;
+        display: block;
+        text-align: center;
+      }
+    }
+
+    &.all {
+      padding-bottom: 70px;
+    }
+
+    .barsContainer {
+     .flex(0 0 60%);
+     margin-right: 60px;
+
+      @media @tablet {
+        .flex(0 0 40%);
+        margin-right: 0;
+      }
+
+      @media @mobile {
+        .flex(0 0 90%);
+        padding-right: 5px;
+        padding-bottom: 20px;
+      }
+
+     .bars {
+      position: relative;
+
+      .best-performance {
+        font-size: 16px;
+        font-weight: bold;
+        padding-top: 5px;
+      }
+
+      .bar {
+        height: 60px;
+        background: @dark-red;
+        position: relative;
+        overflow: visible;
+        color: black;
+
+        @media @mobile {
+          height: 40px;
+        }
+
+        &.winning {
+          background: @blue;
+        }
+
+        &.yards {
+          background: @light-red;
+        }
+
+        .bar-label {
+          position: absolute;
+          left: calc(~"100% - 50px");
+          white-space: nowrap;
+          z-index: 999;
+          top: 0;
+          font-size: 15px;
+          color: white;
+          font-weight: bold;
+
+          &.outer {
+            color: black;
+          left: calc(~"100% + 5px");            
+          }
+        }
+      }
+     }
+
+    }
+  }
+}
+
+hr {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.games-missed {
+  .display-flex();
+  .flex-wrap(wrap);
+  padding-bottom: 30px;
+
+  @media @tablet {
+    // .align-content(center);
+  }
+
+  .gm-container {
+    .display-flex();
+    .flex(0 0 33%);
+    .align-items(flex-start);
+
+    @media @tablet {
+      .flex(0 0 50%);
+      padding-bottom: 20px;
+    }
+
+
+    @media @mobile {
+      .flex(0 0 100%);
+      .justify-content(space-around);
+      padding-bottom: 20px;
+    }
+
+    .gm-image {
+      .flex(0 0 20%);
+      margin-right: 20px;
+
+      @media @mobile {
+        .flex(0 0 15%);
+      }
+
+      @media @tablet {
+        .flex(0 0 15%);
+      }
+
+      img {
+        width: 50px;
+      }
+    }
+
+    .gm-text {
+      .flex(0 0 60%);
+      font-size: 17px;
+
+      @media @tablet {
+        .flex(0 0 75%);
+      }
+
+      @media @mobile {
+        .flex(0 0 75%);
+      }
+    }
+  }
+}
+
+
+.hidden {
+  display: none;
+}
+
+span .break {
+  display: block;
+}
+
+.legend {
+  ul {
+    list-style-type: none;
+    padding-left: 0;
+
+    li {
+      display: inline-block;
+      padding-right: 10px;
+
+      span.passingLegend {
+        display: inline-block;
+        width: 30px;
+        height: 14px;
+        background-color: @dark-red;
+      }
+
+      span.totalLegend {
+        display: inline-block;
+        width: 30px;
+        height: 14px;
+        background-color: @light-red;
+      }
+    }
+  }
+}
+
+.source-credits {
+  .display-flex();
+  font-size: 16px;
+  padding-bottom: 20px;
+
+  @media @mobile {
+    .flex-wrap(wrap);
+    font-size: 15px;
+  }
+
+  @media @tablet {
+    .flex-wrap(wrap);
+  }
+
+  .source {
+    margin-right: auto;
+    font-style: italic;
+
+    @media @mobile {
+      padding-bottom: 5px;
+    }
+
+  }
+
+  .credits {
+
+  }
+}

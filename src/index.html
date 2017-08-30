@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <%= t.include("partials/_head.html", grunt.data.json) %>
+    <link rel="stylesheet" type="text/css" href="style.css">
+  </head>
+  <body>
+
+    <%
+
+    var stats = json.averages;
+
+    var pointsMax = Math.max.apply(null, json.averages.map(t => t.points_per_game_allowed));
+
+    var yardsMax = Math.max.apply(null, json.averages.map(t => t.yards_per_game_allowed));
+
+    var winningMax = Math.max.apply(null, json.averages.map(t => t.winning_percentage));
+
+    var passerRatingMax = Math.max.apply(null, json.averages.map(t => t.passer_rating));
+
+    %>
+
+    <responsive-child>
+      <main class="interactive">
+
+        <h1>Legion of Three</h1>
+        <div class="chatter">
+          It’s no secret the Seahawks defense isn’t its usual dominant force without one more or more of its key cogs. That’s especially true for the D’s anchor unit: the Legion of Boom. When Richard Sherman, Earl Thomas and Kam Chancellor are all on the field, the Hawks’ defense has reached historic heights. But when they’re not, the dropoff is apparent, and the stats back it up. The trio has never played with just one of them. Explore their performance since 2011 below.
+        </div>
+          
+
+
+        <div class="buttons">
+          <input type="radio" name="bar-selection" id="ypg" checked="checked">
+          <label for="ypg" tabindex="0">Average yards per game allowed</label>
+
+          <input type="radio" name="bar-selection" id="ppg">
+          <label for="ppg" tabindex="0">Average points per game allowed</label>
+
+          <input type="radio" name="bar-selection" id="passerRating">
+          <label for="passerRating" tabindex="0">Opponent's passer rating</label>
+
+          <input type="radio" name="bar-selection" id="winning">
+          <label for="winning" tabindex="0">Winning percentage</label>
+
+        </div>
+
+        <div data-type="ypg" class="note">
+
+          <div class="legend">
+            <ul>
+              <li>
+                <span class="passingLegend"></span> Opponent&rsquo;s passing yards
+              </li>
+              <li>
+                <span class="totalLegend"></span> Opponent&rsquo;s total yards
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="graphicContainer">
+
+        <% stats.forEach(function(row) { %>
+          <div class="combo <%= row.combo %>">
+
+            <div class="players">
+          <% var players = {
+            chancellor: { name: "Kam <br> Chancellor", image: "kam" },
+            sherman: { name: "Richard <br> Sherman", image: "richard" },
+            thomas: { name: "Earl <br> Thomas", image: "earl" }
+          } %>
+            <% row.combo.split(",").forEach(function(p) { %>
+              <div class="playerContainer">
+                <span class="playerName"><%= players[p].name %></span>
+                <div class="playerImage"><img src="./assets/<%= players[p].image %>.jpg"></div>
+              </div>
+            <% }) %>
+            </div>
+            
+
+            <div class="barsContainer">
+
+              <!-- Points per game allowed -->
+              <div class="bars cell" data-type="ppg">
+                <div class="bar" style="width: <%= ((row.points_per_game_allowed / pointsMax) * 100).toFixed(2) %>%">
+                  <div class="bar-label outer"><%= row.points_per_game_allowed %></div>
+                </div>
+
+                <% if (row.best) { %>
+                  <div class="best-performance">
+                    Legion of Boom&rsquo;s best performance
+                  </div>
+                <% } %>
+              </div>
+
+              <!-- yards allowed -->
+              <div class="bars cell" data-type="ypg">
+                <div class="bar yards" style="width: <%= ((row.yards_per_game_allowed / yardsMax) * 100).toFixed(2) %>%">
+                    <div class="bar-label outer"><%= row.yards_per_game_allowed %></div>
+                  <div class="bar passing-yards" style="width: <%= ((row.passing_yards_per_game_allowed / row.yards_per_game_allowed) * 100).toFixed(2) %>%">
+                    <div class="yards bar-label"><%= row.passing_yards_per_game_allowed %></div>
+                  </div>
+                </div>
+                <% if (row.best) { %>
+                  <div class="best-performance">
+                    Legion of Boom&rsquo;s best performance
+                  </div>
+                <% } %>
+              </div>
+
+               <!-- passer rating -->
+              <div class="bars cell" data-type= "passerRating" >
+                <div class="bar" style="width: <%= ((row.passer_rating / passerRatingMax) * 100).toFixed(1) %>%">
+                    <div class="bar-label outer"><%= row.passer_rating %></div>
+                </div>
+
+                <% if (row.best) { %>
+                  <div class="best-performance">
+                    Legion of Boom&rsquo;s best performance
+                  </div>
+                <% } %>
+              </div>
+
+              <!-- winning percentage -->
+              <%
+                var winPct = row.winning_percentage;
+
+                var percent = winPct.toFixed(3).replace(/^0/g, '');
+
+              %>
+
+
+              <div class="bars cell" data-type="winning">
+                <div class="bar winning" style="width: <%= ((row.winning_percentage / winningMax) * 100).toFixed(2) %>%">
+                    <div class="bar-label outer">
+                      <%= percent %>
+                    </div>
+                </div>
+
+                <% if (row.best) { %>
+                  <div class="best-performance">
+                    Seahawks&rsquo; best performance
+                  </div>
+                <% } %>
+              </div>
+             
+            </div>
+
+            </div>
+          <% }) %>
+
+        </div>
+
+<!--         <hr> -->
+      
+        <h3>Games missed</h3>
+        <div class="games-missed">
+          <div class="gm-container">
+            <div class="gm-image"><img src="./assets/kam.jpg"></div>
+            <span class="gm-text">Kam Chancellor has missed <b>11</b> games over the course of three seasons because of nagging injuries or his holdout.</span>
+          </div>
+
+          <div class="gm-container">
+            <div class="gm-image"><img src="./assets/richard.jpg"></div>
+            <div class="gm-text">Richard Sherman didn’t start his first <b>six</b> games as a rookie, then solidified his place in the LOB.</div>
+          </div>
+
+          <div class="gm-container">
+            <div class="gm-image"><img src="./assets/earl.jpg"></div>
+            <div class="gm-text">Earl Thomas missed <b>seven</b> games due to a season-ending leg injury last year.</div>
+          </div>
+        </div>
+
+        <div class="source-credits">
+          <div class="source">
+            Source: Seahawks and Seattle Times analysis
+          </div>
+
+          <div class="credits">
+            Emily M. Eng, Vanessa Mart&iacute;nez and Evan Webeck / The Seattle Times
+          </div>
+        </div>
+
+
+
+      </main>
+    </responsive-child>
+
+    <script src="app.js" async></script>
+    <% if (json.project.production) { %>
+    <%= !json.project.embedded ? t.include("partials/_analytics.html") : "" %>
+    <%= t.include("partials/_workHere.html") %>
+    <% } %>
+  </body>
+</html>

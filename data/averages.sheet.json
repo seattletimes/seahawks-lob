@@ -1,0 +1,40 @@
+[
+  {
+    "combo": "chancellor,sherman,thomas",
+    "points_per_game_allowed": 15.71,
+    "ppg_allowed_notes": "notes about ppg go here notes about ppg go here notes about ppg go here notes about ppg go here notes about ppg go here notes about ppg go here notes about ppg go here notes about ppg go here notes about ppg go here notes about ppg go here notes about ppg go here notes about ppg go here ",
+    "yards_per_game_allowed": 294.12,
+    "passing_yards_per_game_allowed": 195.88,
+    "yards_notes": "notes about yards go here notes about yards go here notes about yards go here notes about yards go here notes about yards go here notes about yards go here ",
+    "winning_percentage": 0.706,
+    "winning_notes": "winning notes here winning notes here winning notes here winning notes here winning notes here winning notes here winning notes here ",
+    "passer_rating": 71.08,
+    "passer_notes": "passer notes go here passer notes go here passer notes go here passer notes go here passer notes go here passer notes go here passer notes go here passer notes go here passer notes go here passer notes go here ",
+    "top_notes": "It’s no secret the Seahawks’ defense isn’t its usual dominant force without one more or more of its key cogs. That’s especially true for the D’s anchor unit: the Legion of Boom. When Richard Sherman, Earl Thomas and Kam Chancellor are all on the field, the Hawks’ defense has reached historic heights. But when they’re not — from Sherman's first six games as rookie, before he solidified his place in the LOB, to Chancellor’s nagging injuries or holdout (11 games) to Thomas’ season-ending leg injury last year (six games) — the dropoff is apparent, and the stats back it up. The trio has never played with just one of them. Explore their performance since 2011 (including playoff games) below.",
+    "best": "x"
+  },
+  {
+    "combo": "chancellor,sherman",
+    "points_per_game_allowed": 22,
+    "yards_per_game_allowed": 303.86,
+    "passing_yards_per_game_allowed": 223.57,
+    "winning_percentage": 0.429,
+    "passer_rating": 102.1
+  },
+  {
+    "combo": "chancellor,thomas",
+    "points_per_game_allowed": 21.33,
+    "yards_per_game_allowed": 355,
+    "passing_yards_per_game_allowed": 250,
+    "winning_percentage": 0.333,
+    "passer_rating": 84.61
+  },
+  {
+    "combo": "sherman,thomas",
+    "points_per_game_allowed": 19.82,
+    "yards_per_game_allowed": 321.36,
+    "passing_yards_per_game_allowed": 231.73,
+    "winning_percentage": 0.6,
+    "passer_rating": 83.26
+  }
+]
